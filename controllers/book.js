@@ -79,3 +79,32 @@ exports.deleteBook = (req, res, next) => {
           res.status(500).json({ error });
       });
 };
+
+exports.rateBook = (req, res, next) => {
+  console.log(req.body);
+  const rateObject = {
+    userId : `${req.body.userId}`,
+    grade : req.body.rating
+  }
+
+  Book.findOne({_id: req.params.id})
+  .then((book) => {
+      const mapRateId = book.ratings.map(rate => rate.userId)
+    if (mapRateId.includes(req.auth.userId) === true){
+
+      res.status(401).json({message: 'Action non autorisée, note déjà attribuée'});
+
+    } else {
+
+        const newAverage = (book.averageRating*book.ratings.length+rateObject.grade)/(book.ratings.length+1)
+
+        Book.updateOne({ _id: req.params.id}, { $push: {ratings : rateObject}, $set: {averageRating : newAverage}})
+        .then(() => res.status(200).json(book))
+        .catch(error => res.status(401).json({ error }));
+    }
+  })
+  .catch((error) => {
+      res.status(400).json({ error });
+  });
+    
+};
