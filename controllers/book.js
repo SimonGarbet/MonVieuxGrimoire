@@ -2,6 +2,8 @@ const fs = require('fs');
 
 const Book = require('../models/Book')
 
+const prefix = 'processed_';
+
 
 exports.getAllBooks = (req, res, next) => {
   Book.find()
@@ -22,15 +24,19 @@ exports.getBestBooks = (req, res, next) => {
   .catch(error => res.status(400).json({error}));
 }
 
-exports.addBook = (req, res, next) => {
+exports.addBook = async(req, res, next) => {
+
+
   console.log(req.body)
+
   const bookObject = JSON.parse(req.body.book);
   delete bookObject.userId;
   const book = new Book ({
     ...bookObject,
     userId: req.auth.userId,
-    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    imageUrl: `${req.protocol}://${req.get('host')}/images/${prefix}${req.file.filename}`
   });
+
 
   book.save()
   .then(() => { res.status(201).json({message: 'Livre enregistré !'})})
@@ -42,7 +48,7 @@ exports.modifyBook = (req, res, next) => {
   console.log(req.file);
   const bookObject = req.file ? {
       ...JSON.parse(req.body.book),
-      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+      imageUrl: `${req.protocol}://${req.get('host')}/images/${prefix}${req.file.filename}`
   } : { ...req.body };
 
   delete bookObject.userId;
