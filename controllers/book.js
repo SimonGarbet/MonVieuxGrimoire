@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 const Book = require('../models/Book')
 
 const prefix = 'processed_';
@@ -44,8 +43,10 @@ exports.addBook = async(req, res, next) => {
 };
 
 exports.modifyBook = (req, res, next) => {
+
   console.log(req.body);
   console.log(req.file);
+
   const bookObject = req.file ? {
       ...JSON.parse(req.body.book),
       imageUrl: `${req.protocol}://${req.get('host')}/images/${prefix}${req.file.filename}`
