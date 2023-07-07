@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Book = require('../models/Book')
+const Book = require('../models/Book');
 
 const prefix = 'processed_';
 
@@ -23,13 +23,16 @@ exports.getBestBooks = (req, res, next) => {
   .catch(error => res.status(400).json({error}));
 }
 
-exports.addBook = async(req, res, next) => {
+exports.addBook = (req, res, next) => {
 
 
   console.log(req.body)
 
   const bookObject = JSON.parse(req.body.book);
+
   delete bookObject.userId;
+
+
   const book = new Book ({
     ...bookObject,
     userId: req.auth.userId,

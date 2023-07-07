@@ -3,7 +3,9 @@ const router = express.Router();
 
 const userControl = require('../controllers/user');
 
-router.post('/signup', userControl.signup);
-router.post('/login', userControl.login);
+const sanitize = require ("../middleware/sanitize")
+
+router.post('/signup', sanitize.loginValidate, sanitize.checkError, userControl.signup);
+router.post('/login', sanitize.loginValidate, sanitize.checkError, userControl.login);
 
 module.exports = router;
