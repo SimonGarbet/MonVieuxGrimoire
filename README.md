@@ -6,11 +6,11 @@ Dans le but d'un projet Openclassrooms
 ## Pour lancer ce site :
 
 Commencez par le **back** de ce site :
-- cd MonVieuxGrimoire/backend
+- cd P7Garbet/backend
 - nodemon server
 
 Puis lancez le **front** de ce site :
-- cd MonVieuxGrimoire/frontend
+- cd P7Garbet/frontend
 - npm start
 
 *Si la base de données ne renvoie rien, merci de connecter votre base de données personnelle avec le mot de passe à changer dans App.js (ligne 10).* 
