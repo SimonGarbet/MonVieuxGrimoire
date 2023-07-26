@@ -2,7 +2,7 @@
 # Mon Vieux Grimoire
 
 ### Réalisé par 
-## Simon Garbet [Portfolio(www.simongarbet.com)]
+## [Simon Garbet](www.simongarbet.com)
 ### Dans le but d'un projet Openclassrooms
 
 ## Pour lancer ce site :
