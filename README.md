@@ -1,9 +1,7 @@
-# P7Garbet 
-# Mon Vieux Grimoire
+# P7Garbet : Mon Vieux Grimoire
 
-### Réalisé par 
-## [Simon Garbet](www.simongarbet.com)
-### Dans le but d'un projet Openclassrooms
+### Réalisé par [Simon Garbet](www.simongarbet.com)
+Dans le but d'un projet Openclassrooms
 
 ## Pour lancer ce site :
 
