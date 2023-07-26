@@ -25,9 +25,6 @@ exports.getBestBooks = (req, res, next) => {
 
 exports.addBook = (req, res, next) => {
 
-
-  console.log(req.body)
-
   const bookObject = JSON.parse(req.body.book);
 
   delete bookObject.userId;
@@ -39,6 +36,7 @@ exports.addBook = (req, res, next) => {
     imageUrl: `${req.protocol}://${req.get('host')}/images/${prefix}${req.file.filename}`
   });
 
+  
 
   book.save()
   .then(() => { res.status(201).json({message: 'Livre enregistré !'})})
@@ -46,9 +44,6 @@ exports.addBook = (req, res, next) => {
 };
 
 exports.modifyBook = (req, res, next) => {
-
-  console.log(req.body);
-  console.log(req.file);
 
   const bookObject = req.file ? {
       ...JSON.parse(req.body.book),
@@ -105,7 +100,6 @@ exports.deleteBook = (req, res, next) => {
 };
 
 exports.rateBook = (req, res, next) => {
-  console.log(req.body);
   const rateObject = {
     userId : `${req.body.userId}`,
     grade : req.body.rating

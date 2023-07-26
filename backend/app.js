@@ -7,7 +7,7 @@ const userRoutes = require('./routes/user')
 
 
 
-mongoose.connect('mongodb+srv://SimonGarbet:WaimeaServMVG@cluster0.ghsaazi.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://SimonGarbet:MonVieuxGrimoireBDDSimonGarbet@cluster0.ghsaazi.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

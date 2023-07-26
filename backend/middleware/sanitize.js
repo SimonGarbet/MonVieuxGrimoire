@@ -7,11 +7,10 @@ check('password').trim().escape()
 .matches('[0-9]').withMessage('Le mot de passe doit contenir un chiffre')
 .matches('[A-Z]').withMessage('Le mot de passe doit contenir une majuscule')*/];
 
+exports.bookValidate = [check('book.title')]
 
 
 exports.checkError = (req,res,next) => {
-
-    console.log(req.body)
     
     const errors = validationResult(req);
     console.log(errors);
